@@ -1,49 +1,82 @@
 <!DOCTYPE html>
 <head>
-        <title>calculator</title>
-        <style>
-                form{border: 3px solid black;
-                margin: auto;
-                width: 500px;
-                background-image: url(1.png);
-                background-repeat: no-repeat;
-                background-position: -150px;
-                         }
-        </style>
+		<title>calculator</title>
+		<style>
+				#calculator{
+					border: 3px solid black;
+					margin: auto;
+					width: 500px;
+					background-image: url(1.png);
+					background-repeat: no-repeat;
+					background-position: -150px;
+				}
+		</style>
 </head>
 
 
 <body>
-        <form>
-        <p>
-                 1. number:
-        </p>
-        <input type="text">
-        <p>
-                 2. number:
-        </p>
-         <input type="text"><br>  <br>
+		<div id="calculator">
+		<label>
+				1. number:
+		</label>
+		<input type="text" id="number1">
+		<br><br><br>
+		<label>
+				 2. number:
+		</label>
+		 <input type="text"id="number2"><br>  <br>
 
-        <select name="process" id="">
-                <option value="">
-                        +
-                </option>
-                <option value="">
-                        -
-                </option>
-                <option value="">
-                        /
-                </option>
-                <option value="">
-                        *
-                </option>
-        </select> 
-        <br><br>
-            <button><p>calculate</p></button>
-            <button><p>Clear</p></button>
+		<select name="process" id="process">
+				<option value="+">
+						+
+				</option>
+				<option value="-">
+						-
+				</option>
+				<option value="/">
+						/
+				</option>
+				<option value="*">
+						*
+				</option>
+		</select>
+		<br><br>
+		<button id="submit">
+				calculate
+		</button>
+			
+			<br><br><br>
+			result : <label for="" id="result"></label>
 
-        </form>
+		</div>
 
+<script>
+		var btnSubmit = document.getElementById("submit");
+		var secenek = document.getElementById("process")
+		var sonuc = 0
+		btnSubmit.addEventListener("click",hesaplama)
+		var result = document.getElementById("result")
+		function hesaplama(){
+			var numberOne = document.getElementById("number1").value;
+			var numberTwo = document.getElementById("number2").value;
+			var islem = secenek.options[secenek.selectedIndex].value;
+			
+			switch (islem){
+				case "*" : sonuc = Number(numberOne)*Number(numberTwo);
+				break;
 
+				case "-" : sonuc = Number(numberOne)-Number(numberTwo);
+				break;
+
+				case "/" : sonuc = Number(numberOne)/Number(numberTwo);
+				break;
+
+				case "+" : sonuc = Number(numberOne)+Number(numberTwo);
+				break;
+			}
+			result.innerText = sonuc;
+		}
+
+</script>
 </body>
 </html>
